@@ -12,5 +12,7 @@
 </head>
 <body>
     Hello Jsp
+    <a href="/hello">My Servlet</a> <br/>
+    <a href="/week2/register.jsp">Register</a>
 </body>
 </html>
