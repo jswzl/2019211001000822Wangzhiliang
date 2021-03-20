@@ -24,7 +24,7 @@
                         New User Registration!
                     </div>
                 </h2>
-                <form class="ui large form" method="post" id="form">
+                <form class="ui large form" method="post" id="form" action="/register">
                     <div class="ui  segment">
                         <div class="field">
                             <div class="ui left icon input">
@@ -54,7 +54,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="calendar alternate icon"></i>
-                                <input type="text" name="date" placeholder="Date of birth(yyyy-mm-dd)">
+                                <input type="date" name="date" placeholder="Date of birth(yyyy-mm-dd)">
                             </div>
                         </div>
                         <button class="ui fluid large teal submit button">Register</button>
@@ -109,11 +109,7 @@
                 rules: [{
                     type : 'empty',
                     prompt: 'please enter birthday',
-                },
-                    {
-                        type : 'time',
-                        prompt: 'The date format incorrect，it should be yyyy-dd-mm',
-                    }
+                }
                 ]
             }
         }
