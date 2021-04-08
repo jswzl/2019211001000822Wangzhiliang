@@ -16,7 +16,6 @@ public class RegisterServlet extends HttpServlet {
 
     Connection con = null;
 
-    @Override
     public void init() throws ServletException {
         String url = getServletConfig().getServletContext().getInitParameter("url");
         String driver = getServletConfig().getServletContext().getInitParameter("driver");
@@ -56,24 +55,26 @@ public class RegisterServlet extends HttpServlet {
             if(result==1) System.out.println("OK");
             else System.out.println("ERROR");
 
-            String sql = "select * from usertab";
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            out.println("<html>");
-            out.println("<body>");
-            while (rs.next()){
-                out.println("<table border=\\\"1\\\">");
-                out.println("<tr>");
-                out.println("<th>ID: "+rs.getString(1)+"</th>");
-                out.println("<th>UserName: "+rs.getString(2)+"</th>");
-                out.println("<th>Password: "+rs.getString(3)+"</th>");
-                out.println("<th>Email: :"+rs.getString(4)+"</th>");
-                out.println("<th>Gender:"+rs.getString(5)+"</th>");
-                out.println("<th>BirthDay:"+rs.getString(6)+"</th>");
-                out.println("</tr>");
-                out.println("</table>");
-            }
-            out.println("</body>");
-            out.println("<html>");
+//            String sql = "select * from usertab";
+//            ResultSet rs = con.createStatement().executeQuery(sql);
+//            out.println("<html>");
+//            out.println("<body>");
+//            while (rs.next()){
+//                out.println("<table border=\\\"1\\\">");
+//                out.println("<tr>");
+//                out.println("<th>ID: "+rs.getString(1)+"</th>");
+//                out.println("<th>UserName: "+rs.getString(2)+"</th>");
+//                out.println("<th>Password: "+rs.getString(3)+"</th>");
+//                out.println("<th>Email: :"+rs.getString(4)+"</th>");
+//                out.println("<th>Gender:"+rs.getString(5)+"</th>");
+//                out.println("<th>BirthDay:"+rs.getString(6)+"</th>");
+//                out.println("</tr>");
+//                out.println("</table>");
+//            }
+//            out.println("</body>");
+//            out.println("<html>");
+
+            resp.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }
