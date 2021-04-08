@@ -15,6 +15,11 @@
 
 <h1>Login</h1>
 
+<%
+    if(!(request.getAttribute("message")==null))
+        out.println("<h3 size=\"4\" color=\"red\">"+request.getAttribute("message")+"</h3>");
+%>
+
 <form  id="login" method="post" action="/login">
     <label for="username">username</label>
     <input id="username" name="username" type="text"> <br/>
