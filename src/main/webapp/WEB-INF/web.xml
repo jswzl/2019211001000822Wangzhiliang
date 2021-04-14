@@ -53,4 +53,7 @@
         <param-name>password</param-name>
         <param-value>root</param-value>
     </context-param>
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
 </web-app>
