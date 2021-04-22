@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <%
-    User user = (User)request.getAttribute("user");
+    User user = (User)session.getAttribute("user");
 %>
 <h1>User Info</h1>
 
@@ -30,4 +30,5 @@
     </tr>
 
 </table>
+<a href="updateUser">Update User</a>
 <%@include file="footer.jsp"%>
