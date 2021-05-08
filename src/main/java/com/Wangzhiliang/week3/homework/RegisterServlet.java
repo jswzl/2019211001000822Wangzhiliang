@@ -74,7 +74,7 @@ public class RegisterServlet extends HttpServlet {
 //            out.println("</body>");
 //            out.println("<html>");
 
-            resp.sendRedirect("login.jsp");
+            resp.sendRedirect("login");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.getRequestDispatcher("WEB-INF/views/register.jsp").forward(req,resp);
     }
 
     @Override
