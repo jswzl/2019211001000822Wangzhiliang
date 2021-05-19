@@ -6,9 +6,8 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao implements  IProductDao{
@@ -51,13 +50,13 @@ public class ProductDao implements  IProductDao{
 
     @Override
     public Product findById(Integer productId, Connection con) throws SQLException {
-        String sql = "select * from product where ProductId="+productId;
+        String sql = "select  ProductId,ProductName,ProductDescription,Price,CategoryID from product where ProductId="+productId;
         return qr.query(con,sql,new BeanHandler<>(Product.class));
     }
 
     @Override
     public List<Product> findByCategoryId(int categoryId, Connection con) throws SQLException {
-        String sql = "select * from product where CategoryId="+categoryId;
+        String sql = "select ProductId,ProductName,ProductDescription,Price,CategoryID from product where CategoryId="+categoryId;
         return qr.query(con,sql,new BeanListHandler<>(Product.class));
     }
 
@@ -69,7 +68,7 @@ public class ProductDao implements  IProductDao{
 
     @Override
     public List<Product> findAll(Connection con) throws SQLException {
-        String sql = "select * from product";
+        String sql = "select ProductId,ProductName,ProductDescription,Price,CategoryID from product";
         return qr.query(con,sql,new BeanListHandler<>(Product.class));
     }
 
@@ -83,5 +82,17 @@ public class ProductDao implements  IProductDao{
     public List<Product> getPicture(Integer productId, Connection con) throws SQLException {
         String sql = "select ProductId,Picture from product where ProductId="+productId;
         return qr.query(con,sql,new BeanListHandler<>(Product.class));
+    }
+    public byte[] getPictureById(int productId, Connection con) throws SQLException {
+        byte[] imgByte = null;
+        String sql = "select Picture from product where ProductId=?";
+        PreparedStatement pt = con.prepareStatement(sql);
+        pt.setInt(1, productId);
+        ResultSet rs = pt.executeQuery();
+        while (rs.next()) {
+            Blob blob = rs.getBlob("Picture");
+            imgByte = blob.getBytes(1, (int) blob.length());
+        }
+        return imgByte;
     }
 }
