@@ -39,7 +39,7 @@
 <!--    </servlet-mapping>-->
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:mysql://localhost:3306/productdb?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC</param-value>
+        <param-value>jdbc:mysql://localhost:3306/productdb?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</param-value>
     </context-param>
     <context-param>
         <param-name>driver</param-name>
@@ -53,6 +53,14 @@
         <param-name>password</param-name>
         <param-value>root</param-value>
     </context-param>
+    <filter>
+        <filter-name>wzl</filter-name>
+        <filter-class>com.Wangzhiliang.lab2.WangzhiliangFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>wzl</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
+    </filter-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
