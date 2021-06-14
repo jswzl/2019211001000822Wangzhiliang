@@ -41,6 +41,7 @@ public class UpdateUserServlet extends HttpServlet {
         session.setAttribute("user",user);
         session.setMaxInactiveInterval(30);
         request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+        request.getRequestDispatcher("accountDetails").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
